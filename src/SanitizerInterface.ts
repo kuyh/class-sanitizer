@@ -6,6 +6,6 @@ export interface SanitizerInterface {
     /**
      * Method to be called to perform given value sanitation.
      */
-    sanitize(value: any): any;
+    sanitize(value: any, metadata: any): any;
 
 }

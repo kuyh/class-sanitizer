@@ -207,7 +207,7 @@ export class Sanitizer {
                             sanitizerMetadata.instance = this.createInstance(sanitizerMetadata.object);
 
                         return sanitizerMetadata.instance;
-                    }).reduce((result, sanitizer) => sanitizer.sanitize(result), value);
+                    }).reduce((result, sanitizer) => sanitizer.sanitize(result, metadata), value);
 
             default:
                 throw Error(`Wrong sanitation type is supplied ${metadata.type} for value ${value}`);

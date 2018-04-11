@@ -39,6 +39,18 @@ export function Sanitize(constraintClass: Function, annotationOptions?: Sanitati
     };
 }
 
+export function EnvLoader(expression: Object, annotationOptions?: SanitationOptions) {
+    return function (object: Object, propertyName: string) {
+        defaultMetadataStorage.addSanitationMetadata({
+            type: SanitizeTypes.CUSTOM_SANITIZATION,
+            object: object,
+            propertyName: propertyName,
+            value1: expression,
+            each: annotationOptions && annotationOptions.each ? annotationOptions.each : undefined
+        });
+    };
+}
+
 /**
  * Remove characters that appear in the blacklist. The characters are used in a RegExp and so you will need to
  * escape some chars, e.g @Blacklist('\\[\\]')
